@@ -10,18 +10,16 @@ import static com.JUnitTest.Locators.*;
 
 public class Tests {
 
-    WebDriver driver = Driver.getChromeDriver();
+   private WebDriver driver = Driver.getChromeDriver();
 
 
     @BeforeEach
     public void logIn(){
-        String email = "test_user@gmail.com";
-        String password = "Abc123qwe*";
         String baseUrl = "http://a.testaddressbook.com/sign_in";
         driver.get(baseUrl);
-        driver.findElement(LOGIN_EMAIL).sendKeys(email);
-        driver.findElement(LOGIN_PASSWORD).sendKeys(password);
-        driver.findElement(By.name("commit")).click();
+        driver.findElement(LOGIN_EMAIL).sendKeys(MainTests.EMAIL);
+        driver.findElement(LOGIN_PASSWORD).sendKeys(MainTests.PASSWORD);
+        driver.findElement(LOGIN_BUTTON).click();
     }
 
 
@@ -29,7 +27,8 @@ public class Tests {
     @Disabled
     @DisplayName("URL chacking")
     public  void chackAddressesList(){
-        driver.get("http://a.testaddressbook.com/addresses");
+        driver.get("http://a.testaddressbook.com/");
+
         String accountName =  driver.findElement(ACCOUNT_NAME).getText();
         Assertions.assertEquals("test_user@gmail.com",accountName, "Wrong account!");
 
@@ -41,11 +40,11 @@ public class Tests {
    // @Disabled
     @DisplayName("First Name and Last Name of the Address account = Test User")
     public void firstAddressName(){
-        driver.get("http://a.testaddressbook.com/addresses");
-        WebElement firstShowButton = driver.findElement(By.xpath("//a[contains(text(),'Show')]"));
-        firstShowButton.click();
-        String firstNameUser = driver.findElement(By.xpath("//span[@data-test = 'first_name' ]")).getText();
-        String lastNameUser = driver.findElement(By.xpath("//span[@data-test = 'last_name' ]")).getText();
+        driver.get("http://a.testaddressbook.com/");
+        driver.findElement(LINK_ADDRESS).click();
+        driver.findElement(SHOW_LINK).click();
+        String firstNameUser = driver.findElement(FIRST_NAME_TEXT).getText();
+        String lastNameUser = driver.findElement(LAST_NAME_TEXT).getText();
 
         Assertions.assertEquals("Test"+ " " + "User",firstNameUser+ " " + lastNameUser,"Wrong Address name!");
 

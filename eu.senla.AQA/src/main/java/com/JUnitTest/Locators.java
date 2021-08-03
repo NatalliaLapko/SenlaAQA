@@ -10,7 +10,7 @@ public class Locators {
 
 public static final By LOGIN_EMAIL = By.id("session_email");
 public static final By LOGIN_PASSWORD = By.id("session_password");
-
+public static final By LOGIN_BUTTON = By.name("commit");
 //new address form
  public static final By LINK_ADDRESS = By.linkText("Addresses");
  public static final By LINK_NEW_ADDRESS =By.xpath("//a[@href = '/addresses/new']");
@@ -34,8 +34,12 @@ public static final By LOGIN_PASSWORD = By.id("session_password");
    //address editing form
 
     public static final By EDIT_BUTTON = By.cssSelector("a[href$='edit']");
+    public static final By EDIT_ADDRESS_BUTTON = By.xpath("//input[@name = 'commit']");
     public static final By DESTROY = By.linkText("Destroy");
 
 public static final By ACCOUNT_NAME = By.xpath("//span[@class = 'navbar-text']");
+public static final By SHOW_LINK = By.xpath("//a[contains(text(),'Show')]");
+public static final By FIRST_NAME_TEXT = By.xpath("//span[@data-test = 'first_name' ]");
+public static final By LAST_NAME_TEXT = By.xpath("//span[@data-test = 'last_name' ]");
 
 }
